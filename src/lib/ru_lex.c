@@ -181,13 +181,13 @@ static cst_val* en_word_to_phones(const cst_item *word)
   cst_lexicon *cmu_lex=val_lexicon(feat_val(u->features,"cmu_lex"));
   const char *pos=NULL;
   cst_val *tmp,*phones;
-  if((name[strcspn(name,"aeiouy")]=='\0')&&(!in_lex(cmu_lex,name,NULL)))
+  if((name[strcspn(name,"aeiouy")]=='\0')&&(!in_lex(cmu_lex,name,NULL, u->features)))
     phones=lts_rewrites_word(name,&ru_consonants_lts);
   else
     {
       if(cst_streq(name,"a"))
         pos="n";
-      tmp=lex_lookup(cmu_lex,name,pos);
+      tmp=lex_lookup(cmu_lex,name,pos, u->features);
       phones=ru_lts_apply(tmp,&ru_en_lts);
       delete_val(tmp);
     }
