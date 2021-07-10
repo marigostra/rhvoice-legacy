@@ -1,0 +1,28 @@
+
+AM_CFLAGS = $(RHVOICE_CFLAGS) $(RHVOICE_INCLUDES) -I../include/ -I../hts_engine_api/include/
+
+noinst_LIBRARIES = librhvoice.a
+
+librhvoice_a_SOURCES = \
+lib.c \
+ru_consonants_lts.c \
+ru_cst_regexes.c \
+ru_dict.c \
+ru_downcase_lts.c \
+ru_en_lts.c \
+ru_ffeatures.c \
+ru_gpos.c \
+ru_hyphen_lts.c \
+ru_lex.c \
+ru_lts.c \
+ru_number_lts.c \
+ru_phoneset.c \
+ru_phrasing.c \
+ru_phrasing_cart.c \
+ru_postlex.c \
+russian.c \
+ru_stress_cart.c \
+ru_text.c \
+ru_user_dict.c \
+ru_vowel_reduction_cart.c \
+ru_vpair_cart.c 

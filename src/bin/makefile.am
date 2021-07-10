@@ -1,0 +1,16 @@
+
+AM_CFLAGS = $(RHVOICE_CFLAGS) $(RHVOICE_INCLUDES) -I../include/
+LIBS += -lunistring -lflite_cmulex -lflite -lm
+
+
+bin_PROGRAMS=RHVoice
+
+
+RHVoice_LDADD = \
+../lib/librhvoice.a \
+../hts_engine_api/lib/libhtsengine.a
+
+RHVoice_DEPENDENCIES = $(RHVoice_LDADD)
+
+RHVoice_SOURCES = \
+main.c

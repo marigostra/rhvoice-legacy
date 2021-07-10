@@ -1,0 +1,15 @@
+
+AM_CFLAGS = $(RHVOICE_CFLAGS) $(RHVOICE_INCLUDES) -I../include/
+
+noinst_LIBRARIES = libhtsengine.a
+
+libhtsengine_a_SOURCES = \
+HTS_audio.c \
+HTS_engine.c \
+HTS_gstream.c \
+HTS_label.c \
+HTS_misc.c \
+HTS_model.c \
+HTS_pstream.c \
+HTS_sstream.c \
+HTS_vocoder.c 
