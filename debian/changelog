@@ -1,0 +1,5 @@
+rhvoice (0.3.0-lwr1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Michael Pozhidaev <michael.pozhidaev@gmail.com>  Tue, 03 Nov 2015 03:43:44 +0000
