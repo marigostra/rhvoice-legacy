@@ -1,5 +1,5 @@
 
-AC_INIT(RHVoice, 0.3, yakovleva.o.v@gmail.com)
+AC_INIT(rhvoice-legacy, 1.0.0, yakovleva.o.v@gmail.com)
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([-Wall foreign])
 
@@ -18,7 +18,6 @@ AC_CONFIG_FILES([
   makefile
   src/makefile
   src/bin/makefile
-
   src/lib/makefile
   src/hts_engine_api/makefile
   src/hts_engine_api/lib/makefile

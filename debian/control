@@ -1,14 +1,13 @@
-Source: rhvoice
+Source: rhvoice-legacy
 Section: unknown
 Priority: optional
-Maintainer: Michael Pozhidaev <michael.pozhidaev@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, flite1-dev, libunistring-dev
+Maintainer: Michael Pozhidaev <msp@luwrain.org>
+Build-Depends: debhelper (>= 8.0.0), dh-autoreconf, autotools-dev, flite1-dev, libunistring-dev
 Standards-Version: 3.9.4
-Homepage: https://github.com/olga-yakovleva/
-Vcs-Git: https://github.com/Olga-Yakovleva/RHVoice
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/rhvoice.git;a=summary
+Homepage: https://marigostra.ru/projects/homeros/
+Vcs-Git: https://github.com/marigostra/rhvoice-legacy/
 
-Package: rhvoice
+Package: rhvoice-legacy
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: RHVoice is a free and open source speech synthesizer for Russian language

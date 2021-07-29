@@ -3,14 +3,13 @@ AM_CFLAGS = $(RHVOICE_CFLAGS) $(RHVOICE_INCLUDES) -I../include/
 LIBS += -lunistring -lflite_cmulex -lflite -lm
 
 
-bin_PROGRAMS=RHVoice
+bin_PROGRAMS=rhvoice-legacy
 
-
-RHVoice_LDADD = \
+rhvoice_legacy_LDADD = \
 ../lib/librhvoice.a \
 ../hts_engine_api/lib/libhtsengine.a
 
-RHVoice_DEPENDENCIES = $(RHVoice_LDADD)
+rhvoice_legacy_DEPENDENCIES = $(RHVoice_LDADD)
 
-RHVoice_SOURCES = \
+rhvoice_legacy_SOURCES = \
 main.c
