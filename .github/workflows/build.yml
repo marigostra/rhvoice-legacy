@@ -1,0 +1,72 @@
+name: Build Debian Package
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Ubuntu x86_64
+          - os: ubuntu
+            version: '22.04'
+            runner: ubuntu-latest
+            arch: amd64
+          - os: ubuntu
+            version: '24.04'
+            runner: ubuntu-latest
+            arch: amd64
+          - os: ubuntu
+            version: '26.04'
+            runner: ubuntu-latest
+            arch: amd64
+          # Debian x86_64
+          - os: debian
+            version: '12'
+            runner: ubuntu-latest
+            arch: amd64
+          - os: debian
+            version: '13'
+            runner: ubuntu-latest
+            arch: amd64
+          # Debian aarch64 (ARM64)
+          - os: debian
+            version: '12'
+            runner: ubuntu-24.04-arm
+            arch: arm64
+          - os: debian
+            version: '13'
+            runner: ubuntu-24.04-arm
+            arch: arm64
+
+    container:
+      image: ${{ matrix.os }}:${{ matrix.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          apt-get update
+          apt-get install -y build-essential dpkg-dev debhelper dh-autoreconf autotools-dev flite1-dev libunistring-dev
+
+      - name: Build deb package
+        run: |
+          dpkg-buildpackage -us -uc -b
+          mkdir -p build-artifacts
+          mv ../*.deb build-artifacts/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-${{ matrix.os }}-${{ matrix.version }}-${{ matrix.arch }}
+          path: build-artifacts/*.deb
