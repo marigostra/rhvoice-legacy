@@ -65,6 +65,13 @@ jobs:
           dpkg-buildpackage -us -uc -b
           mkdir -p build-artifacts
           mv ../*.deb build-artifacts/
+          rm -f build-artefacts/*dbgsym*
+
+      - name: Rename deb files
+        run: |
+          for file in build-artifacts/*.deb; do
+            mv "$file" "${file%.deb}-${{ matrix.os }}-${{ matrix.version }}-${{ matrix.arch }}.deb"
+          done
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
